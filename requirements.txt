@@ -1,0 +1,5 @@
+
+pandas~=1.5.1
+streamlit~=1.14.1
+appdirs~=1.4.4
+pathvalidate~=2.5.2
