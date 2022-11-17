@@ -8,7 +8,7 @@ Created: 11/8/22 - 15:28:20
 
 """
 from inspypi_search.utils import to_boolean
-from inspypi_search.utils.data import remove_unwanted_characters, parse_to_dict
+from inspypi_search.utils.data import parse_to_dict, remove_unwanted_characters
 
 
 class ResParse(object):

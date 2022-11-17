@@ -7,8 +7,6 @@ Description:
 Created: 11/13/22 - 11:18:35
 
 """
-from configparser import ConfigParser
-
 
 default_config = {
         'max_results': None,

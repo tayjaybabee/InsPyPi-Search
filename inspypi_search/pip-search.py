@@ -8,4 +8,3 @@ Description:
 Created: 11/13/22 - 10:57:30
 
 """
-from inspypi_search.config.search import SearchConfig

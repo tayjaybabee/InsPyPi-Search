@@ -7,8 +7,8 @@ Description:
 Created: 11/8/22 - 15:27:58
 
 """
-from typing import Union
 import sys
+from typing import Union
 
 
 def as_bool(

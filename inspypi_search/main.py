@@ -9,13 +9,11 @@ Created: 11/6/22 - 21:47:32
 """
 # region Imports
 
-from inspypi_search.cli.arguments import Arguments
-from inspypi_search.utils.search import search_cmd as search
-from inspypi_search.utils.data import parse_to_dict, pack_table
-
 from inspyre_toolbox.humanize import Numerical
 
-from sys import argv
+from inspypi_search.cli.arguments import Arguments
+from inspypi_search.utils.data import pack_table
+from inspypi_search.utils.search import search_cmd as search
 
 # endregion
 

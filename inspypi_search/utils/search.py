@@ -8,15 +8,11 @@ Created: 11/8/22 - 20:17:23
 
 """
 # Some imports of standard libraries
-from subprocess import Popen, PIPE
-from typing import Any, Dict, Tuple, Union
+from subprocess import PIPE, Popen
 
-from pandas import DataFrame
-
+from inspypi_search.utils.data import HEADERS, get_results_dataframe, pack_table
 # Now some imports of our own libraries/packages
 from inspypi_search.utils.resparse import ResParse
-from inspypi_search.utils.data import pack_table, HEADERS, get_results_dataframe
-
 
 DEFAULT_RESULT_TYPE = 'table'
 """ 

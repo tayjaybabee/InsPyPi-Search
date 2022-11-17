@@ -8,8 +8,6 @@ Created: 11/11/22 - 08:37:53
 
 """
 
-from pathlib import Path
-
 
 class History:
     __contents = {}

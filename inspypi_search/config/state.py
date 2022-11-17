@@ -7,17 +7,15 @@ Description:
 Created: 11/14/22 - 12:18:17
 
 """
-from shutil import move
-from os import makedirs
 import pathlib
-from inspypi_search.utils.filesystem import validate_dir, validate_filename, is_valid_filepath
-from inspypi_search.config.errors import AutoCreateSetTimingError
-from inspypi_search.utils import as_bool
-from inspypi_search.__about__ import __CACHE_DIR__ as CACHE_DIR,\
-    __STATE_DIR__ as STATE_DIR,\
-    __CONFIG_DIR__ as CONFIG_DIR
+from os import makedirs
+from shutil import move
 from time import time
 
+from inspypi_search.__about__ import __CONFIG_DIR__ as CONFIG_DIR, __STATE_DIR__ as STATE_DIR
+from inspypi_search.config.errors import AutoCreateSetTimingError
+from inspypi_search.utils import as_bool
+from inspypi_search.utils.filesystem import validate_dir, validate_filename
 
 STATE_BACKUP_DIR = STATE_DIR.joinpath('backups')
 STATE_FILENAME = 'state.ini'

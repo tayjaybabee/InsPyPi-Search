@@ -9,8 +9,8 @@ Created: 11/13/22 - 13:29:08
 
 """
 from pathlib import Path
-from appdirs import user_config_dir, user_cache_dir, user_state_dir
 
+from appdirs import user_cache_dir, user_config_dir, user_state_dir
 
 __PROG__       = 'InsPyPi Search'
 

@@ -7,8 +7,9 @@ Description:
 Created: 11/8/22 - 20:43:12
 
 """
-from pandas import DataFrame
 from re import sub
+
+from pandas import DataFrame
 
 HEADERS = [
         'Package Name',

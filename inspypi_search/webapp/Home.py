@@ -9,9 +9,8 @@ Created: 11/6/22 - 21:49:29
 """
 import streamlit as st
 from streamlit_searchbox import st_searchbox
-from subprocess import Popen, PIPE
+
 from inspypi_search.utils.search import do_search as search
-from inspypi_search.utils.data import HEADERS
 
 res = None
 

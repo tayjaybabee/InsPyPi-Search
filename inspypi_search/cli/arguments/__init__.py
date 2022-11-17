@@ -9,7 +9,6 @@ Created: 11/9/22 - 20:58:50
 """
 from argparse import ArgumentParser, Namespace
 from typing import Union
-from sys import argv
 
 
 class Arguments(object):
