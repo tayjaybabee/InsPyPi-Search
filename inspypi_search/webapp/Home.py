@@ -8,9 +8,12 @@ Created: 11/6/22 - 21:49:29
 
 """
 import streamlit as st
-from streamlit_searchbox import st_searchbox
+from pandas import DataFrame
 
-from inspypi_search.utils.search import do_search as search
+# from streamlit_searchbox import st_searchbox
+from inspypi_search.utils.data import HEADERS
+from inspypi_search.utils.data import pack_table
+from inspypi_search.utils.search import search_cmd as search
 
 res = None
 
@@ -18,22 +21,36 @@ if 'search_config' in st.session_state.keys():
     session_search_config = st.session_state['search_config']
 else:
     st.session_state['search_config'] = {
-            'exact_match': False,
-            'save_history': True,
-            'theme': 'dark'
+        'exact_match': False,
+        'save_history': True,
+        'theme': 'dark'
     }
 
 
 def search_pypi(query) -> list[str]:
-    res = search(query, 'table')
-    return res.package_list
+    res = search(query)
+    parsed = res.formatted_results
+    table = pack_table(parsed)
+
+    return table
 
 
+with st.form('Search') as f:
+    _query = st.text_input('Query')
 
-selected = st_searchbox(
-    search_pypi,
+    submitted = st.form_submit_button('Submit')
 
-)
+    if submitted:
+        with st.spinner('Searching...') as sp:
+            res = search_pypi(_query)
+            st.write(res)
+            st.success('Search complete!')
+        st.dataframe(DataFrame(res, columns=HEADERS))
+
+# selected = st_searchbox(
+#    search_pypi,
+#
+# $)
 
 # def run(query, exact_match=st.session_state.search_config.exact_match):
 #     try:

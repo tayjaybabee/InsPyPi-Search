@@ -10,6 +10,8 @@ Created: 11/9/22 - 20:58:50
 from argparse import ArgumentParser, Namespace
 from typing import Union
 
+from inspy_logger import LEVELS as LOG_LEVELS
+
 
 class Arguments(object):
 
@@ -17,6 +19,15 @@ class Arguments(object):
         self.__parsed = False
         self.__parsed_args = None
         self.__parser = ArgumentParser()
+
+        self.__parser.add_argument(
+            '-l',
+            '--log-level',
+            action='store',
+            choices=LOG_LEVELS,
+            help='The level at which you would like the program to output logging data.'
+
+        )
 
         self.__sub_command_parser = self.__parser.add_subparsers(dest='subcommands')
 
@@ -76,7 +87,7 @@ class Arguments(object):
         """
         return self.__parsed_args
 
-    def parse(self) -> Namespace:
+    def parse(self, *args, **kwargs) -> Namespace:
         """
         A wrapper/alias for ArgumentParser.parse_args().
 
@@ -87,6 +98,10 @@ class Arguments(object):
                 The parsed arguments object.
         """
         if not self.parsed:
-            self.__parsed_args = self.__parser.parse_args()
+            self.__parsed_args = self.__parser.parse_args(*args, **kwargs)
 
         return self.__parsed_args
+
+
+ARGS = Arguments()
+PARSED_ARGS = ARGS.parse()

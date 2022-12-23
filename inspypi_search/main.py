@@ -30,7 +30,6 @@ def main():
     print(f'Starting search for {ARGS.query}')
     results = search(ARGS.query, )
     parsed_results = results.formatted_results
-    print(parsed_results)
     # Parsing the results into a dictionary.
     # res_dict = parse_to_dict(parsed_results)
     # print(res_dict)

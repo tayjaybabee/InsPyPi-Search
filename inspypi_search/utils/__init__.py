@@ -7,6 +7,8 @@ Description:
 Created: 11/8/22 - 15:27:58
 
 """
+from __future__ import annotations
+
 import sys
 from typing import Union
 

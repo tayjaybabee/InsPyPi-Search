@@ -10,9 +10,12 @@ Created: 11/8/22 - 20:17:23
 # Some imports of standard libraries
 from subprocess import PIPE, Popen
 
-from inspypi_search.utils.data import HEADERS, get_results_dataframe, pack_table
+from inspypi_search.__about__ import __PROG__ as PROG
+from inspypi_search.utils.data import HEADERS, get_results_dataframe, pack_table, parse_to_dict
 # Now some imports of our own libraries/packages
 from inspypi_search.utils.resparse import ResParse
+
+LOG_NAME = f'{PROG}.utils.search:Module'
 
 DEFAULT_RESULT_TYPE = 'table'
 """ 
@@ -98,7 +101,7 @@ def do_search(query, result_type: str = None):
     # Figure out what our result type is going to be, and fill the :var:`result_type` variable with the choice,
     if result_type is not None and isinstance(result_type, str) and result_type.lower() in result_types:
         result_type = result_type.lower()
-    elif not isinstance(result_type, list):
+    elif not isinstance(result_type, str):
         raise TypeError(f'result_type must be a string, not {type(result_type)}!')
     elif result_type not in result_types:
         raise ValueError(f"'result_type' must be one of {', '.join(result_types)}")
@@ -110,17 +113,17 @@ def do_search(query, result_type: str = None):
     if result_type == 'raw_tuple':
         return raw_res
 
-    res = raw_res[0]
+    _res = raw_res['raw_utf8']
 
     if result_type == 'raw_utf8':
-        return res
+        return _res
 
-    res_lst = res.splitlines()
+    res_lst = _res.splitlines()
 
     if result_type == 'raw_list':
         return res_lst
 
-    results = sort_results(res)
+    results = parse_to_dict(res)
 
     if result_type == 'sorted_dict':
         return results
